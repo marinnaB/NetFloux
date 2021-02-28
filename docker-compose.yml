@@ -1,0 +1,43 @@
+version: "2"
+services:
+  front:
+    build: ./front
+    ports:
+      - "5000:5000"
+
+  authentication:
+    build: ./authentication
+    links:
+      - db
+    ports:
+      - "6000:6000"
+
+  catalog:
+    build: ./catalog
+    links:
+      - db-Catalog
+    ports:
+      - "7000:7000"
+  mylist:
+    build: ./mylist
+    links:
+      - db-Catalog
+    ports:
+      - "8000:8000"
+  db:
+    image: mysql:5.7
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+  db-Catalog:
+    image: mysql:5.7
+    ports:
+      - "32008:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db-Catalog:/docker-entrypoint-initdb.d/:ro
+

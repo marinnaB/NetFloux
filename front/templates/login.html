@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login-style.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+<title>Netfloux - Watch TV Shows Online, Watch Movies Online</title>
+<head>
+  
+</head>
+<body>
+    <header class="showcase">
+        
+
+            <div class="logo">
+                <img src="/static/images/logo.png">
+            </div>
+
+            <div class="showcase-content">
+                <div class="formm">
+                    <form id="form" method="post" action="/loginVerify"> 
+                        {% for category, message in get_flashed_messages(with_categories=True) %}
+                            <div class="alert-{{category}}">Error: {{ message }}</div>
+                        {% endfor %}
+                        <h1>Sign In</h1>
+                        <div class="info">
+                            <input id="username" name="username" class="email" type="email" placeholder="Email or phone number"> <br>
+                            <input id="password" name="password" class="email" type="password" placeholder="Password">
+                        </div>
+                        <div class="btn">
+                            <button class="btn-primary" type="submit">Sign In</button>
+                        </div>
+                    </form>   
+                </div>
+                
+                <div class="signup">
+                    <p>New to NetFloux ?</p>
+                    <a href="">Sign up now</a>
+                </div>
+
+
+
+            </div>
+
+       
+    </header>
+
+
+</body>
+</html>
+
